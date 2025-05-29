@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import WidgetApp from './WidgetApp.vue';
+import WidgetApp from './components/WidgetApp.vue';
 
 window.mountSurvey = function () {
 	let el = document.getElementById('fpSurveyNps');

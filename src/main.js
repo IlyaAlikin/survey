@@ -1,5 +1,8 @@
-import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
+import { defineCustomElement } from 'vue';
+import Widget from './App.vue';
 
-createApp(App).mount('#app')
+// создаём Web Component
+const WidgetElement = defineCustomElement(Widget);
+
+// регистрируем его
+customElements.define('my-widget', WidgetElement);
