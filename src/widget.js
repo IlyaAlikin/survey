@@ -1,7 +1,7 @@
 // src/widget.js
 import { createApp } from 'vue';
+// import WidgetApp from './components/WidgetApp.vue';
 import WidgetApp from './components/WidgetApp.vue';
-
 function mountWidget() {
 	let el = document.getElementById('fpSurveyNps');
 	if (!el) {

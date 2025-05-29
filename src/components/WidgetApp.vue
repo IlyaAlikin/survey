@@ -1,6 +1,6 @@
 <!-- src/WidgetApp.vue -->
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
+import HelloWorld from './HelloWorld.vue';
 </script>
 
 <template>
