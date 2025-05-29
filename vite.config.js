@@ -2,21 +2,28 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { resolve } from 'path';
 
-export default defineConfig({
-	plugins: [vue()],
-	build: {
-		rollupOptions: {
-			input: {
-				main: resolve(__dirname, 'index.html'),
-				widget: resolve(__dirname, 'src/widget.js'),
+export default defineConfig(({ command }) => {
+	const isWidgetBuild = process.env.BUILD_WIDGET === 'true';
+
+	return {
+		plugins: [vue()],
+		build: {
+			lib: isWidgetBuild
+				? {
+						entry: resolve(__dirname, 'src/widget.js'),
+						name: 'SurveyWidget',
+						fileName: () => 'widget.js',
+						formats: ['iife'], // Важно: IIFE для обычного <script>
+				  }
+				: undefined,
+			rollupOptions: {
+				input: !isWidgetBuild
+					? resolve(__dirname, 'index.html')
+					: undefined,
 			},
-			output: {
-				entryFileNames: '[name].js',
-			},
+			outDir: 'dist',
+			emptyOutDir: true,
 		},
-		outDir: 'dist',
-		emptyOutDir: true,
-		target: 'es2015',
-	},
-	base: '/survey/',
+		base: '/survey/',
+	};
 });
