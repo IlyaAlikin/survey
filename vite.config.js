@@ -18,4 +18,5 @@ export default defineConfig({
 		emptyOutDir: true,
 		target: 'es2015',
 	},
+	base: '/survey/',
 });
