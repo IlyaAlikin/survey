@@ -11,5 +11,8 @@ export default defineConfig({
 			formats: ['iife'], // embeddable via <script>
 		},
 	},
+	define: {
+		'process.env': {}, // <== ВАЖНО: предотвратить ошибку в браузере
+	},
 	base: '/survey/',
 });
